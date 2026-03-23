@@ -4,10 +4,10 @@ from random import randint
 
 class Rental:
     def __init__(self, name, rentalNum, bikeType, amount, startDate, endDate):
-        self.name = name
-        self.rentalNum = rentalNum
-        self.bikeType = bikeType
-        self.amount = amount
+        self.name = str(name)
+        self.rentalNum = int(rentalNum)
+        self.bikeType = str(bikeType)
+        self.amount = int(amount)
         self.startDate = startDate
         self.endDate = endDate
-        self.raffleNum = randint(1,150)
+        self.raffleNum = int(randint(1,150))
