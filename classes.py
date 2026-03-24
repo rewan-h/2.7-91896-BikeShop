@@ -11,3 +11,13 @@ class Rental:
         self.startDate = startDate
         self.endDate = endDate
         self.raffleNum = int(randint(1,150))
+
+    def toTuple(self):
+        return (
+            self.name,
+            self.rentalNum,
+            self.bikeType,
+            self.amount,
+            self.startDate.strftime("%d/%m/%Y"),
+            self.endDate.strftime("%d/%m/%Y")
+        )
