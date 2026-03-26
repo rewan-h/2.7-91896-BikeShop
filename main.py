@@ -17,14 +17,27 @@ def submit():
 
         value_error.grid_forget()
     except ValueError as e:
-        value_error.grid(row=6, column=0)
+        value_error.grid(row=6, column=2)
         print(e)
 
 def removeSelected():
-    return
+    selected = tree.selection()
+    if not selected:
+        return
+
+    for item in selected:
+        values = tree.item(item)["values"]
+
+        for r in rentals:
+            if r.toTuple() == tuple(values):
+                rentals.remove(r)
+                return
+
+        tree.delete(item)
+
 
 form = tk.Frame(root)
-form.pack()
+form.pack(anchor="w", padx=20)
 
 tk.Label(form, text="Customer Name").grid(row=0, column=0)
 name_entry = tk.Entry(form)
@@ -51,8 +64,7 @@ return_entry = DateEntry(form, date_pattern="dd/MM/yyyy", state="readonly")
 return_entry.grid(row=5, column=1)
 
 tk.Button(form, text="Submit", command=submit).grid(row=6, column=1, pady=10)
-#tk.Button(form, text="Remove Selected", command=removeSelected)
-#TODO: The above comment needs to be implemented
+tk.Button(form, text="Remove Selected", command=removeSelected).grid(row=6, column=0)
 value_error = tk.Label(form, text="Incorrect value(s)", fg="red")
 
 headings = ("Name", "Rental #", "Type", "Amount", "Start Date", "Return Date")
