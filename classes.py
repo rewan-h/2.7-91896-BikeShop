@@ -1,6 +1,4 @@
 # I normally put custom classes in seperate files to keep the main.py clean
-from random import randint
-
 
 class Rental:
     def __init__(self, name, rentalNum, bikeType, amount, startDate, endDate):
