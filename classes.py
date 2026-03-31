@@ -1,5 +1,3 @@
-# I normally put custom classes in seperate files to keep the main.py clean
-
 class Rental:
     def __init__(self, name, rentalNum, bikeType, amount, startDate, endDate):
         self.name = str(name)

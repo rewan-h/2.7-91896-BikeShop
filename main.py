@@ -17,13 +17,13 @@ errorMessage = tk.StringVar()
 rentals = []
 
 # ---- Main functions ----
-# Contain essentially all of the logic for this program
+# Contain essentially all the logic for this program
 
 def submit(): # Function called when submit button is clicked for adding customer data
               # Validates user inputs and adds the submission to both the internal and treeview list
     global errorMessage
     try:
-        errorMessage.set("Incorrect value(s)") # Default to this error message if there is some unaccounted for error (typically in the int() cast)
+        errorMessage.set("Incorrect value(s)") # Default to this error message if there is some unaccounted for error
 
         # Place all relevant values into more readable variables for input handling and processing
         name = name_entry.get()
@@ -69,7 +69,7 @@ def submit(): # Function called when submit button is clicked for adding custome
 
         rentals.append(Rental(name, rentalNo, bikeType, amount, hireDate, returnDate))
 
-        tree.insert("","end",values=rentals[-1].toTuple()) # Getting the index for selection is a bit weird but we cant add anything else between the first entry and running this so its all good (trust me bro)
+        tree.insert("","end",values=rentals[-1].toTuple())
 
         value_error.grid_forget() # No error, we can hide any present error message
     except ValueError as e: # If an error is thrown we just add the error message label back to the grid to display it
@@ -126,7 +126,6 @@ start_entry.grid(row=4, column=1)
 tk.Label(form, text="Return Date").grid(row=5, column=0)
 return_entry = DateEntry(form, date_pattern="dd/MM/yyyy", state="readonly")
 return_entry.grid(row=5, column=1)
-
 
 # This creates the submit and remove buttons they are set into the grid on the same line as we dont need to store them as a variable
 tk.Button(form, text="Submit", command=submit).grid(row=6, column=1, pady=10)
